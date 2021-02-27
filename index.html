@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+  <link href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" rel="stylesheet" />
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body>
+
+  <div id="app" class="justify-center max-w-xl mx-auto my-10 ">
+
+    <!-- Head -->
+    <div class="flex flex-col">
+      <h1 class="text-xl pb-5 pl-28">Photo Gallery ( {{ totalphoto }} )</h1>
+      <photo-search :hide-src="hideSrc" :show-src="showSrc" @src-search='Src' @enter-src='enterSrc'
+        @cancel-fun='cancelFun'></photo-search>
+    </div>
+    <!-- End Head -->
+
+    <!-- BigPic-->
+    <photo-view :expand="expand" :big-pic="bigPic" @expand-false='expandfalse'></photo-view>
+    <!-- End BigPic-->
+
+    <!-- Photos -->
+    <photo-item :photos="photos" @zoom-popup='zoom'></photo-item>
+    <div>
+      <h1 v-show="nophoto">
+        No Photo
+      </h1>
+    </div>
+    <!-- End Photos -->
+
+  </div>
+
+  <!-- my main.js -->
+
+  <script src="./main.js"></script>
+  <script src="./component/photoItem.js"></script>
+  <script src="./component/photoSearch.js"></script>
+  <script src="./component/photoView.js"></script>
+
+  <script>
+    app.mount('#app')
+  </script>
+
+</body>
+
+</html>
